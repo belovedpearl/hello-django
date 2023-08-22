@@ -8,8 +8,9 @@
 <body>
     <h1>Add a Todo Item:</h1>
     <form method="POST" action="{% url 'add' %}">
+        <!-- {% url 'add' %} -->
         {% csrf_token %}
-        {{ form.as_p}}
+        {{ form.as_p }}
         <div>
             <p>
                 <button type="submit">Add Item</button>

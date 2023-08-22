@@ -8,8 +8,9 @@ class TestViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'todo/todo_list.html')
 
-    def test_can_get_add_item(self):
-        response = self.client.get('/add')
+
+    def test_get_add_item_page(self):
+        response = self.client.get('/add/')
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'todo/add_item.html')
     
@@ -20,8 +21,8 @@ class TestViews(TestCase):
         self.assertTemplateUsed(response, 'todo/edit_item.html')
 
     def test_can_add_item(self):
-        response = self.client.post('/add', {'name': 'Test added item'})
-        self.assertRedirects(response, "/")
+        response = self.client.post('/add/', {'name': 'Test Added Item'})
+        self.assertRedirects(response, '/')
 
     def test_can_delete_item(self):
         item = Items.objects.create(name='Test todo item')
